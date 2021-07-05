@@ -1,6 +1,7 @@
 package task3;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Teacher extends Person {
     private double salary;
@@ -27,6 +28,19 @@ public class Teacher extends Person {
 
     public void setSubjects(ArrayList<Subject> subjects) {
         this.subjects = subjects;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Teacher)) return false;
+        Teacher teacher = (Teacher) o;
+        return Double.compare(teacher.getSalary(), getSalary()) == 0 && getSubjects().equals(teacher.getSubjects());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getSalary(), getSubjects());
     }
 
     @Override

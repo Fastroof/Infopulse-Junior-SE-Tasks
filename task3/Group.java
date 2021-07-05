@@ -1,6 +1,7 @@
 package task3;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Group {
     private String groupName;
@@ -56,6 +57,19 @@ public class Group {
 
     public void setSpecializationCode(int specializationCode) {
         this.specializationCode = specializationCode;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Group)) return false;
+        Group group = (Group) o;
+        return getSpecializationCode() == group.getSpecializationCode() && getGroupName().equals(group.getGroupName()) && getStudents().equals(group.getStudents()) && getCurator().equals(group.getCurator()) && getSubjectsList().equals(group.getSubjectsList());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getGroupName(), getStudents(), getCurator(), getSubjectsList(), getSpecializationCode());
     }
 
     @Override

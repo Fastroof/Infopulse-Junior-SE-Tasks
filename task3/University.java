@@ -1,6 +1,7 @@
 package task3;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class University {
     private String universityName;
@@ -35,6 +36,19 @@ public class University {
 
     public void setSubjects(ArrayList<Subject> subjects) {
         this.subjects = subjects;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof University)) return false;
+        University that = (University) o;
+        return getUniversityName().equals(that.getUniversityName()) && getFaculties().equals(that.getFaculties()) && getSubjects().equals(that.getSubjects());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getUniversityName(), getFaculties(), getSubjects());
     }
 
     @Override

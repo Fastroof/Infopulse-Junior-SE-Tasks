@@ -1,5 +1,7 @@
 package task3;
 
+import java.util.Objects;
+
 public abstract class Person {
     private String name;
     private int age;
@@ -43,6 +45,20 @@ public abstract class Person {
 
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Person)) return false;
+        Person person = (Person) o;
+        return getAge() == person.getAge() && getName().equals(person.getName()) && Objects.equals(getPhoneNumber(),
+                person.getPhoneNumber()) && Objects.equals(getEmailAddress(), person.getEmailAddress());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getAge(), getPhoneNumber(), getEmailAddress());
     }
 
     @Override
