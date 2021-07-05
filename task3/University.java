@@ -9,6 +9,12 @@ public class University {
     private ArrayList<Subject> subjects;
 
     public University(String universityName, ArrayList<Faculty> faculties, ArrayList<Subject> subjects) {
+        if (faculties.isEmpty()) {
+            throw new NullPointerException("University needs at least 1 faculty");
+        }
+        if (subjects.isEmpty()) {
+            throw new NullPointerException("University needs at least 1 subject");
+        }
         this.universityName = universityName;
         this.faculties = faculties;
         this.subjects = subjects;

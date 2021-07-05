@@ -8,6 +8,9 @@ public class Faculty {
     private ArrayList<Department> departments;
 
     public Faculty(String facultyName, ArrayList<Department> departments) {
+        if (departments == null) {
+            throw new NullPointerException("Faculty needs at least 1 department");
+        }
         this.facultyName = facultyName;
         this.departments = departments;
     }

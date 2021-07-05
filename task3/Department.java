@@ -9,6 +9,12 @@ public class Department {
     private ArrayList<Group> groups;
 
     public Department(String departmentName, ArrayList<Teacher> teachers, ArrayList<Group> groups) {
+        if (groups == null) {
+            throw new NullPointerException("Department needs at least 1 group");
+        }
+        if (teachers.size() < 3) {
+            throw new NullPointerException("Department needs at least 3 teachers");
+        }
         this.departmentName = departmentName;
         this.teachers = teachers;
         this.groups = groups;

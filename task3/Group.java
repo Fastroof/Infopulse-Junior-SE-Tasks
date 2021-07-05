@@ -12,6 +12,12 @@ public class Group {
 
     public Group(String groupName, ArrayList<Student> students, Curator curator, ArrayList<Subject> subjectsList,
                  int specializationCode) {
+        if ((students.size() < 6) || (students.size() > 30)) {
+            throw new IllegalArgumentException("The number of students should be from 6 to 30.");
+        }
+        if (subjectsList.isEmpty()) {
+            throw new NullPointerException("Group needs at least 1 subject");
+        }
         this.groupName = groupName;
         this.students = students;
         this.curator = curator;
